@@ -30,42 +30,42 @@ class Book(BaseModel):
 
 
 # In-memory database
-BOOKS_DB = {
-    1: {
-        "id": 1,
-        "title": "The Great Gatsby",
-        "author": "F. Scott Fitzgerald",
-        "price": 12.99,
-        "stock": 45,
-    },
-    2: {
-        "id": 2,
-        "title": "1984",
-        "author": "George Orwell",
-        "price": 14.99,
-        "stock": 32,
-    },
-    3: {
-        "id": 3,
-        "title": "To Kill a Mockingbird",
-        "author": "Harper Lee",
-        "price": 13.50,
-        "stock": 28,
-    },
-    4: {
-        "id": 4,
-        "title": "Pride and Prejudice",
-        "author": "Jane Austen",
-        "price": 11.99,
-        "stock": 52,
-    },
-    5: {
-        "id": 5,
-        "title": "The Catcher in the Rye",
-        "author": "J.D. Salinger",
-        "price": 12.50,
-        "stock": 19,
-    },
+BOOKS_DB: dict[int, Book] = {
+    1: Book(
+        id=1,
+        title="The Great Gatsby",
+        author="F. Scott Fitzgerald",
+        price=12.99,
+        stock=45,
+    ),
+    2: Book(
+        id=2,
+        title="1984",
+        author="George Orwell",
+        price=14.99,
+        stock=32,
+    ),
+    3: Book(
+        id=3,
+        title="To Kill a Mockingbird",
+        author="Harper Lee",
+        price=13.50,
+        stock=28,
+    ),
+    4: Book(
+        id=4,
+        title="Pride and Prejudice",
+        author="Jane Austen",
+        price=11.99,
+        stock=52,
+    ),
+    5: Book(
+        id=5,
+        title="The Catcher in the Rye",
+        author="J.D. Salinger",
+        price=12.50,
+        stock=19,
+    ),
 }
 
 
@@ -105,9 +105,9 @@ def list_books(author: Optional[str] = None, min_price: Optional[float] = None):
     logger.info(f"Listing books - filters: author={author}, min_price={min_price}")
     books = list(BOOKS_DB.values())
     if author:
-        books = [b for b in books if author.lower() in b["author"].lower()]
+        books = [b for b in books if author.lower() in b.author.lower()]
     if min_price:
-        books = [b for b in books if b["price"] >= min_price]
+        books = [b for b in books if b.price >= min_price]
     logger.info(f"Retrieved {len(books)} books from database")
     return {"books": books}
 
