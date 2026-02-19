@@ -19,7 +19,7 @@ logger = logging.getLogger(SERVICE_NAME)
 
 
 # -----------------------------
-# Models
+# Data Models
 # -----------------------------
 class Book(BaseModel):
     id: int
