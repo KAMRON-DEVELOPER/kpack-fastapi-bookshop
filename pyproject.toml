@@ -4,8 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = [
-    "fastapi>=0.129.0",
-    "pydantic>=2.12.5",
-    "uvicorn>=0.41.0",
-]
+dependencies = ["fastapi>=0.129.0", "pydantic>=2.12.5", "uvicorn>=0.41.0"]
+
+[tool.poetry]
+package-mode = false
