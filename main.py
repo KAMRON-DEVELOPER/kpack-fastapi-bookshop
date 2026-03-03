@@ -118,3 +118,7 @@ def get_book(book_id: int):
     book = BOOKS_DB[book_id]
     logger.info(f"Retrieved book: {book['title']} by {book['author']}")
     return {"book": book}
+
+@app.get("test-railpack")
+def test_railpack():
+    return {"working": "true"}
